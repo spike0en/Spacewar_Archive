@@ -1,0 +1,55 @@
+name: Dump firmware (incremental)
+
+on:
+  workflow_dispatch:
+    inputs:
+      ota1:
+        description: 'OTA1'
+        required: true
+      ota2:
+        description: 'OTA2'
+        required: true
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Setup
+      run: |
+        sudo apt update
+        sudo apt -y install protobuf-compiler python3 python3-protobuf zstd
+        curl -L https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_linux_amd64.tar.gz -o - | tar zxf - payload-dumper-go
+        git clone https://github.com/CaptainThrowback/update_payload_extractor
+        curl https://raw.githubusercontent.com/LineageOS/android_system_update_engine/lineage-20.0/update_metadata.proto -o update_metadata.proto
+        protoc update_metadata.proto --python_out update_payload_extractor/update_payload
+
+    - name: Download
+      id: download
+      run: |
+        curl ${{ inputs.ota1 }} -o ota1.zip
+        echo ::set-output name=ota1_ver::`unzip -p ota1.zip META-INF/com/android/metadata | grep ^version_name= | cut -b 14-`
+        curl ${{ inputs.ota2 }} -o ota2.zip
+        echo ::set-output name=ota2_ver::`unzip -p ota2.zip META-INF/com/android/metadata | grep ^version_name= | cut -b 14-`
+
+    - name: Dump
+      run: |
+        ./payload-dumper-go -o ota1 ota1.zip > /dev/null
+        pushd ota1 ; for i in ./*.img; do mv -i "$i" "${i%.img}"; done; popd
+        unzip ota2.zip payload.bin
+        update_payload_extractor/extract.py --skip_hash --output_dir ota2 --old_dir ota1 payload.bin
+        pushd ota2; for f in *; do zstd $f; done; popd
+
+    - name: Upload release assets
+      uses: softprops/action-gh-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        body: |
+          ~ Incremental OTA ~
+          [${{ steps.download.outputs.ota1_ver }}](${{ inputs.ota1 }}) (full) -> [${{ steps.download.outputs.ota2_ver }}](${{ inputs.ota2 }})
+        tag_name: ${{ steps.download.outputs.ota2_ver }}
+        files: ota2/*.img.zst

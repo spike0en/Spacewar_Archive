@@ -1,0 +1,42 @@
+name: Dump firmware (full)
+
+on:
+  workflow_dispatch:
+    inputs:
+      ota:
+        description: 'OTA'
+        required: true
+
+jobs:
+  dump:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+
+    - name: Setup
+      run: |
+        sudo apt update
+        sudo apt -y install zstd
+        curl -L https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_linux_amd64.tar.gz -o - | tar zxf - payload-dumper-go
+
+    - name: Download
+      id: download
+      run: |
+        curl ${{ inputs.ota }} -o ota.zip
+        echo ::set-output name=ota_ver::`unzip -p ota.zip META-INF/com/android/metadata | grep ^version_name= | cut -b 14-`
+
+    - name: Dump
+      run: |
+        ./payload-dumper-go -o ota ota.zip > /dev/null
+        pushd ota; for f in *; do zstd $f; done; popd
+
+    - name: Upload release assets
+      uses: softprops/action-gh-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        body: ${{ inputs.ota }}
+        tag_name: ${{ steps.download.outputs.ota_ver }}
+        files: ota/*.img.zst
