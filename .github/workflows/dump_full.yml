@@ -33,10 +33,10 @@ jobs:
         pushd ota; for f in *; do zstd $f; done; popd
 
     - name: Upload release assets
-      uses: softprops/action-gh-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: ncipollo/release-action@v1
       with:
+        artifacts: ota/*.img.zst
+        artifactErrorsFailBuild: true
         body: ${{ inputs.ota }}
-        tag_name: ${{ steps.download.outputs.ota_ver }}
-        files: ota/*.img.zst
+        tag: ${{ steps.download.outputs.ota_ver }}
+        token: ${{ secrets.GITHUB_TOKEN }}

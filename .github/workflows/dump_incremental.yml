@@ -44,12 +44,12 @@ jobs:
         pushd ota2; for f in *; do zstd $f; done; popd
 
     - name: Upload release assets
-      uses: softprops/action-gh-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      uses: ncipollo/release-action@v1
       with:
+        artifacts: ota2/*.img.zst
+        artifactErrorsFailBuild: true
         body: |
           ~ Incremental OTA ~
           [${{ steps.download.outputs.ota1_ver }}](${{ inputs.ota1 }}) (full) -> [${{ steps.download.outputs.ota2_ver }}](${{ inputs.ota2 }})
-        tag_name: ${{ steps.download.outputs.ota2_ver }}
-        files: ota2/*.img.zst
+        tag: ${{ steps.download.outputs.ota2_ver }}
+        token: ${{ secrets.GITHUB_TOKEN }}
