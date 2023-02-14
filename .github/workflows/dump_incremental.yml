@@ -40,7 +40,7 @@ jobs:
         ./payload-dumper-go -o ota1 ota1.zip > /dev/null
         pushd ota1 ; for i in ./*.img; do mv -i "$i" "${i%.img}"; done; popd
         unzip ota2.zip payload.bin
-        update_payload_extractor/extract.py --skip_hash --output_dir ota2 --old_dir ota1 payload.bin
+        pushd update_payload_extractor ; ./extract.py --skip_hash --output_dir ../ota2 --old_dir ../ota1 ../payload.bin; popd
         pushd ota2; for f in *; do zstd $f; done; popd
 
     - name: Upload release assets
