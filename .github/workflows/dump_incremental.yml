@@ -30,9 +30,9 @@ jobs:
     - name: Download
       id: download
       run: |
-        curl ${{ inputs.ota1 }} -o ota1.zip
+        curl -L ${{ inputs.ota1 }} -o ota1.zip
         echo ::set-output name=ota1_ver::`unzip -p ota1.zip META-INF/com/android/metadata | grep ^version_name= | cut -b 14-`
-        curl ${{ inputs.ota2 }} -o ota2.zip
+        curl -L ${{ inputs.ota2 }} -o ota2.zip
         echo ::set-output name=ota2_ver::`unzip -p ota2.zip META-INF/com/android/metadata | grep ^version_name= | cut -b 14-`
 
     - name: Dump
