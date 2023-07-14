@@ -3,11 +3,8 @@ name: Dump firmware (incremental)
 on:
   workflow_dispatch:
     inputs:
-      ota1:
-        description: 'OTA1'
-        required: true
-      ota2:
-        description: 'OTA2'
+      urls:
+        description: 'URLs'
         required: true
 
 jobs:
@@ -27,29 +24,17 @@ jobs:
         curl https://raw.githubusercontent.com/LineageOS/android_system_update_engine/lineage-20.0/update_metadata.proto -o update_metadata.proto
         protoc update_metadata.proto --python_out update_payload_extractor/update_payload
 
-    - name: Download
-      id: download
-      run: |
-        curl -L ${{ inputs.ota1 }} -o ota1.zip
-        echo ::set-output name=ota1_ver::`unzip -p ota1.zip META-INF/com/android/metadata | grep ^version_name= | cut -b 14-`
-        curl -L ${{ inputs.ota2 }} -o ota2.zip
-        echo ::set-output name=ota2_ver::`unzip -p ota2.zip META-INF/com/android/metadata | grep ^version_name= | cut -b 14-`
-
     - name: Dump
-      run: |
-        ./payload-dumper-go -o ota1 ota1.zip > /dev/null
-        pushd ota1 ; for i in ./*.img; do mv -i "$i" "${i%.img}"; done; popd
-        unzip ota2.zip payload.bin
-        pushd update_payload_extractor ; ./extract.py --skip_hash --output_dir ../ota2 --old_dir ../ota1 ../payload.bin; popd
-        pushd ota2; for f in *; do zstd $f; done; popd
+      id: dump
+      run: echo ${{ inputs.urls }} | xargs ./dump_incremental.sh
 
     - name: Upload release assets
       uses: ncipollo/release-action@v1
       with:
-        artifacts: ota2/*.img.zst
+        artifacts: ota/*.img.zst
         artifactErrorsFailBuild: true
         body: |
           ~ Incremental OTA ~
-          [${{ steps.download.outputs.ota1_ver }}](${{ inputs.ota1 }}) (full) -> [${{ steps.download.outputs.ota2_ver }}](${{ inputs.ota2 }})
-        tag: ${{ steps.download.outputs.ota2_ver }}
+          ${{ steps.dump.outputs.body }}
+        tag: ${{ steps.dump.outputs.tag }}
         token: ${{ secrets.GITHUB_TOKEN }}
