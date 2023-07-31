@@ -4,7 +4,7 @@ set -ex
 # Extract full update
 curl -L $1 -o ota.zip
 ./payload-dumper-go -o ota ota.zip > /dev/null
-BODY="[`unzip -p ota.zip META-INF/com/android/metadata | grep ^version_name= | cut -b 14-`]($1}) (full)"
+BODY="[`unzip -p ota.zip META-INF/com/android/metadata | grep ^version_name= | cut -b 14-`]($1) (full)"
 rm ota.zip
 
 # Drop .img suffix from images
