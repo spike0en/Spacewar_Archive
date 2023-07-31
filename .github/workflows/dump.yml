@@ -25,15 +25,13 @@ jobs:
 
     - name: Dump
       id: dump
-      run: echo ${{ inputs.urls }} | xargs ./dump_incremental.sh
+      run: echo ${{ inputs.urls }} | xargs ./dump.sh
 
     - name: Upload release assets
       uses: ncipollo/release-action@v1
       with:
         artifacts: ota/*.img.zst
         artifactErrorsFailBuild: true
-        body: |
-          ~ Incremental OTA ~
-          ${{ steps.dump.outputs.body }}
+        body: ${{ steps.dump.outputs.body }}
         tag: ${{ steps.dump.outputs.tag }}
         token: ${{ secrets.GITHUB_TOKEN }}
