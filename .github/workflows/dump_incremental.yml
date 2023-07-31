@@ -7,6 +7,9 @@ on:
         description: 'URLs'
         required: true
 
+env:
+  LD_LIBRARY_PATH: $GITHUB_WORKSPACE/bin
+
 jobs:
   dump:
     runs-on: ubuntu-latest
@@ -18,11 +21,7 @@ jobs:
     - name: Setup
       run: |
         sudo apt update
-        sudo apt -y install protobuf-compiler python3 python3-protobuf zstd
-        curl -L https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_linux_amd64.tar.gz -o - | tar zxf - payload-dumper-go
-        git clone https://github.com/CaptainThrowback/update_payload_extractor
-        curl https://raw.githubusercontent.com/LineageOS/android_system_update_engine/lineage-20.0/update_metadata.proto -o update_metadata.proto
-        protoc update_metadata.proto --python_out update_payload_extractor/update_payload
+        sudo apt -y install zstd
 
     - name: Dump
       id: dump

@@ -7,6 +7,9 @@ on:
         description: 'OTA'
         required: true
 
+env:
+  LD_LIBRARY_PATH: $GITHUB_WORKSPACE/bin
+
 jobs:
   dump:
     runs-on: ubuntu-latest
@@ -19,7 +22,6 @@ jobs:
       run: |
         sudo apt update
         sudo apt -y install zstd
-        curl -L https://github.com/ssut/payload-dumper-go/releases/download/1.2.2/payload-dumper-go_1.2.2_linux_amd64.tar.gz -o - | tar zxf - payload-dumper-go
 
     - name: Download
       id: download
@@ -29,7 +31,10 @@ jobs:
 
     - name: Dump
       run: |
-        ./payload-dumper-go -o ota ota.zip > /dev/null
+        unzip ota.zip payload.bin
+        rm ota.zip
+        mkdir ota
+        ./bin/ota_extractor -output_dir ota -payload payload.bin
         pushd ota; for f in *; do zstd $f; done; popd
 
     - name: Upload release assets

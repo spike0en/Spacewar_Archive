@@ -3,14 +3,12 @@ set -ex
 
 # Extract full update
 curl -L $1 -o ota.zip
-./payload-dumper-go -o ota ota.zip > /dev/null
+unzip ota.zip payload.bin
 BODY="[`unzip -p ota.zip META-INF/com/android/metadata | grep ^version_name= | cut -b 14-`]($1) (full)"
 rm ota.zip
-
-# Drop .img suffix from images
-for i in ota/*.img; do
-    mv -i "$i" "${i%.img}"
-done
+mkdir ota
+./bin/ota_extractor -output_dir ota -payload payload.bin
+rm payload.bin
 
 # Apply incrementals
 for i in ${@:2}; do
@@ -20,9 +18,8 @@ for i in ${@:2}; do
     BODY="$BODY -> [$TAG]($i)"
     rm ota.zip
 
-    pushd update_payload_extractor
-    ./extract.py --skip_hash --output_dir ../ota_new --old_dir ../ota ../payload.bin
-    popd
+    mkdir ota_new
+    ./bin/ota_extractor -input-dir ota -output_dir ota_new -payload payload.bin
 
     rm -rf ota
     mv ota_new ota
