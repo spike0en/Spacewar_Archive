@@ -7,9 +7,6 @@ on:
         description: 'URLs'
         required: true
 
-env:
-  LD_LIBRARY_PATH: $GITHUB_WORKSPACE/bin
-
 jobs:
   dump:
     runs-on: ubuntu-latest
