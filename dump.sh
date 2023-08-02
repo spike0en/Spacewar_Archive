@@ -28,9 +28,7 @@ for i in ${@:2}; do
 done
 
 # Compress with zstd
-for f in ota/*; do
-    zstd --rm "$f"
-done
+zstd --rm ota/*
 
 # Echo tag name and release body
 echo "tag=$TAG" >> "$GITHUB_OUTPUT"
