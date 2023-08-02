@@ -18,7 +18,7 @@ jobs:
     - name: Setup
       run: |
         sudo apt update
-        sudo apt -y install zstd
+        sudo apt -y install aria2 zstd
 
     - name: Dump
       id: dump

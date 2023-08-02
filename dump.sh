@@ -2,7 +2,7 @@
 set -ex
 
 # Extract full update
-curl -L $1 -o ota.zip
+aria2c -x5 $1 -o ota.zip
 unzip ota.zip payload.bin
 BODY="[`unzip -p ota.zip META-INF/com/android/metadata | grep ^version_name= | cut -b 14-`]($1) (full)"
 rm ota.zip
@@ -12,7 +12,7 @@ rm payload.bin
 
 # Apply incrementals
 for i in ${@:2}; do
-    curl -L $i -o ota.zip
+    aria2c -x5 $i -o ota.zip
     unzip ota.zip payload.bin
     TAG="`unzip -p ota.zip META-INF/com/android/metadata | grep ^version_name= | cut -b 14-`"
     BODY="$BODY -> [$TAG]($i)"
