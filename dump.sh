@@ -41,13 +41,16 @@ echo "board=taro" > ota/android-info.txt
 cp prebuilt/super_empty.img ota/
 mkdir out
 cd ota
+7z a -mx9 ../out/boot.img.zip boot.img &
+7z a -mx9 ../out/vbmeta.img.zip vbmeta.img &
 7z a -mx0 ../out/fastboot-${TAG}-image.zip *
+wait
 cd ..
 rm -rf ota
 cd out
 7z a -v2G -mx0 fastboot-${TAG}-image-split.zip *-image.zip
 rm *-image.zip
-zstd --rm -T0 *
+zstd --rm -T0 *-split.zip*
 
 # Echo tag name and release body
 echo "tag=$TAG" >> "$GITHUB_OUTPUT"
