@@ -6,6 +6,9 @@ on:
       urls:
         description: 'URLs'
         required: true
+      name:
+        description: 'Name'
+        required: true
 
 jobs:
   dump:
@@ -30,5 +33,5 @@ jobs:
         artifacts: out/*.zip*
         artifactErrorsFailBuild: true
         body: ${{ steps.dump.outputs.body }}
-        tag: ${{ steps.dump.outputs.tag }}
+        tag: ${{ steps.dump.outputs.tag }}_${{ github.event.inputs.name }}
         token: ${{ secrets.GITHUB_TOKEN }}
