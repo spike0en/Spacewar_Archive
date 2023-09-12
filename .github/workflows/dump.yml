@@ -18,7 +18,7 @@ jobs:
     - name: Setup
       run: |
         sudo apt update
-        sudo apt -y install aria2 zstd
+        sudo apt -y install aria2 zstd p7zip-full
 
     - name: Dump
       id: dump
@@ -27,7 +27,7 @@ jobs:
     - name: Upload release assets
       uses: ncipollo/release-action@v1
       with:
-        artifacts: ota/*.img.zst
+        artifacts: out/*.zip*
         artifactErrorsFailBuild: true
         body: ${{ steps.dump.outputs.body }}
         tag: ${{ steps.dump.outputs.tag }}
