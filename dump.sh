@@ -37,7 +37,7 @@ done
 wait
 
 # Compress with zstd
-zstd --rm ota/*
+zstd -T0 --rm ota/*
 
 # Echo tag name and release body
 echo "tag=$TAG" >> "$GITHUB_OUTPUT"
