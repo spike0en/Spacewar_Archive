@@ -12,6 +12,7 @@ on:
 
 jobs:
   dump:
+    permissions: write-all
     runs-on: ubuntu-latest
 
     steps:
