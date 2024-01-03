@@ -22,7 +22,7 @@ jobs:
     - name: Setup
       run: |
         sudo apt update
-        sudo apt -y install aria2 zstd p7zip-full
+        sudo apt -y install aria2 zstd p7zip-full parallel openssl xxhash
 
     - name: Dump
       id: dump
@@ -31,7 +31,7 @@ jobs:
     - name: Upload release assets
       uses: ncipollo/release-action@v1
       with:
-        artifacts: out/*.7z*
+        artifacts: out/*
         artifactErrorsFailBuild: true
         body: ${{ steps.dump.outputs.body }}
         tag: ${{ steps.dump.outputs.tag }}_${{ github.event.inputs.name }}

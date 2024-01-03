@@ -35,5 +35,17 @@ Skip downloading `-logical` files, and follow the above steps but answer "N" to
 `Flash logical partition images?` during [Pong_fastboot_flasher](https://github.com/HELLBOY017/Pong_fastboot_flasher)'s
 installation.
 
+## Integrity check
+You can check downloaded file's integrity with one the following commands:
+
+``` bash
+md5sum -c *-hash.md5
+sha1sum -c *-hash.sha1
+sha256sum -c *-hash.sha256
+xxh128sum -c *-hash.xxh128
+```
+
+xxh128 is usually the fastest.
+
 ### Thanks to
 [luk1337](https://github.com/luk1337/oplus_archive)

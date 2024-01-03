@@ -40,6 +40,12 @@ wait
 mkdir out
 mkdir dyn
 cd ota
+# Calculate hash
+for h in md5 sha1 sha256; do
+  ls * | parallel openssl dgst -$h -r | sort -k2 -V > ../out/${TAG}-hash.$h &
+done
+ls * | parallel xxh128sum | sort -k2 -V > ../out/${TAG}-hash.xxh128 &
+wait
 for f in system system_ext product vendor vendor_dlkm odm; do
     mv ${f}.img ../dyn
 done
