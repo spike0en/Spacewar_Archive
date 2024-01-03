@@ -31,7 +31,7 @@ jobs:
     - name: Upload release assets
       uses: ncipollo/release-action@v1
       with:
-        artifacts: out/*.zip*
+        artifacts: out/*.7z*
         artifactErrorsFailBuild: true
         body: ${{ steps.dump.outputs.body }}
         tag: ${{ steps.dump.outputs.tag }}_${{ github.event.inputs.name }}

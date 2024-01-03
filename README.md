@@ -2,34 +2,38 @@
 * Unmodified Nothing Phone 2 OTA images archive
 
 ## Downloads
-Downloads are tagged with `POST_OTA_VERSION`, NothingOS version and region, [here](https://github.com/arter97/nothing_archive/releases).
+Downloads are tagged with `POST_OTA_VERSION`, NothingOS version,
+[here](https://github.com/arter97/nothing_archive/releases).
+
+Logical partition images are uploaded separately, marked `-logical`,
+so that other images can be downloaded quickly if needed.
 
 ## Usage
 While this is a collection of unmodified images, you still need to have the bootloader unlocked.
 
+You can re-lock the bootloader after flashing images.
+
 Please download and use the latest fastboot [directly from Google](https://developer.android.com/tools/releases/platform-tools).
-
- * **Magisk**
-
- If you're interested in just rooting your device, download `boot.img.zip` and `vbmeta.img.zip`. After extracting both zip files, push `boot.img` to your device and proceed with Magisk installation. Optionally, if you want to disable `dm-verity`, use fastboot to flash a modified vbmeta:
-
- ``` bash
- fastboot flash --disable-verity --disable-verification vbmeta vbmeta.img
- ```
 
  * **fastboot**
 
-To flash the stock, unmodified images with fastboot, extract the `*.zst` files using zstd and extract the split zip files using 7z, and supply the final `fastboot-*-image.zip` to fastboot.
+To flash the stock, unmodified images with fastboot, extract the files using 7z and
+use [Pong_fastboot_flasher](https://github.com/HELLBOY017/Pong_fastboot_flasher).
+
+If you optionally want to have `dm-verity` disabled, perform:
 
 ``` bash
-fastboot update /path/to/fastboot-*-image.zip
+fastboot update --disable-verity --disable-verification vbmeta.img
 ```
 
-or if you want to have `dm-verity` disabled:
+ * **NothingMuchROM**
 
-``` bash
-fastboot update --disable-verity --disable-verification /path/to/fastboot-*-image.zip
-```
+You can use this repository to flash non-super partitions to the latest stock to be
+used with [NothingMuchROM](https://xdaforums.com/t/nothingmuchrom-for-nothing-phone-2.4623411).
+
+Skip downloading `-logical` files, and follow the above steps but answer "N" to
+`Flash logical partition images?` during [Pong_fastboot_flasher](https://github.com/HELLBOY017/Pong_fastboot_flasher)'s
+installation.
 
 ### Thanks to
 [luk1337](https://github.com/luk1337/oplus_archive)

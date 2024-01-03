@@ -6,7 +6,7 @@ aria2c -x5 $1 -o ota.zip
 unzip ota.zip payload.bin
 mv payload.bin payload_working.bin
 TAG="`unzip -p ota.zip payload_properties.txt | grep ^POST_OTA_VERSION= | cut -b 18-`"
-BODY="`unzip -p ota.zip META-INF/com/android/metadata | grep ^post-build= | cut -b 12-`"
+BODY="[$TAG]($1) (full)"
 rm ota.zip
 mkdir ota
 (
@@ -21,7 +21,7 @@ for i in ${@:2}; do
     wait
     mv payload.bin payload_working.bin
     TAG="`unzip -p ota.zip payload_properties.txt | grep ^POST_OTA_VERSION= | cut -b 18-`"
-    BODY="`unzip -p ota.zip META-INF/com/android/metadata | grep ^post-build= | cut -b 12-`"
+    BODY="$BODY -> [$TAG]($i)"
     rm ota.zip
 
     (
@@ -36,21 +36,19 @@ for i in ${@:2}; do
 done
 wait
 
-# Create a pseudo fastboot zip (split 2G, each separately compressed with zstd)
-echo "board=taro" > ota/android-info.txt
-cp prebuilt/super_empty.img ota/
+# Create a split 7z image
 mkdir out
+mkdir dyn
 cd ota
-7z a -mx9 ../out/boot.img.zip boot.img &
-7z a -mx9 ../out/vbmeta.img.zip vbmeta.img &
-7z a -mx0 ../out/fastboot-${TAG}-image.zip *
+for f in system system_ext product vendor vendor_dlkm odm; do
+    mv ${f}.img ../dyn
+done
+7z a -mx6 ../out/${TAG}-image.7z * &
+cd ../dyn
+7z a -mx6 -v1g ../out/${TAG}-image-logical.7z *
 wait
 cd ..
-rm -rf ota
-cd out
-7z a -v2G -mx0 fastboot-${TAG}-image-split.zip *-image.zip
-rm *-image.zip
-zstd --rm -T0 *-split.zip*
+rm -rf ota dyn
 
 # Echo tag name and release body
 echo "tag=$TAG" >> "$GITHUB_OUTPUT"
