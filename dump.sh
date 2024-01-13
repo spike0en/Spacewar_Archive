@@ -46,7 +46,7 @@ for h in md5 sha1 sha256; do
 done
 ls * | parallel xxh128sum | sort -k2 -V > ../out/${TAG}-hash.xxh128 &
 wait
-for f in system system_ext product vendor vendor_dlkm odm; do
+for f in system system_ext product vendor odm; do
     mv ${f}.img ../dyn
 done
 7z a -mx6 ../out/${TAG}-image.7z * &
