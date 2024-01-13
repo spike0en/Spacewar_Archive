@@ -6,7 +6,7 @@
 
 ## Downloads
 
-- Downloads are tagged with POST_OTA_VERSION, NothingOS version [here](https://github.com/spike0en/Spacewar_Archive/releases).
+- Downloads are tagged with POST_OTA_VERSION & NothingOS version [here](https://github.com/spike0en/Spacewar_Archive/releases).
 
 - Logical partition images are uploaded separately, marked -logical,
   so that other images can be downloaded quickly if needed.
@@ -24,7 +24,7 @@
 ## Fastboot Flashing
 
 - To flash the stock, unmodified images with fastboot, extract the files using 7z and
-  use [NP1-FLASH-ALL-SCRIPT](https://github.com/LukeSkyD/NP1-FLASH-ALL-SCRIPT).
+  use [Spacewar_fastboot_flasher](https://github.com/spike0en/Spacewar_fastboot_flasher).
 
 - Please download and use the latest fastboot [directly from Google](https://developer.android.com/tools/releases/platform-tools).
 
