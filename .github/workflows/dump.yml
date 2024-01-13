@@ -1,4 +1,4 @@
-name: Dump firmware(s)
+name: Spacewar Firmware Dumper
 
 on:
   workflow_dispatch:
