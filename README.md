@@ -34,22 +34,6 @@
 fastboot update --disable-verity --disable-verification vbmeta.img
 ```
 
-## Manual Sideloading of Full OTA Packages
-
-### A. Via Stock Nothing Offline OTA Updater Tool (Locked BL): 
-
-1. To flash stock, unmodified official Full OTA packages, extract the files using 7z to obtain the <name>-FullOTA.zip file.
-2. Using your preferred file manager, create a folder named 'ota' at the root of your storage.
-3. Copy the <name>-FullOTA.zip into the newly created 'ota' folder.
-4. Open your dial pad and type *#*#682#*#*.
-5. The manual update utility will launch, scanning and locating your previously downloaded update file.
-6. Tap to begin the update. The process will take about 10-15 minutes (duration may vary).
-7. Enjoy your updated device after reboot!
-
-### B. Via Custom Recovery (Unlocked BL):
-
-- Alternatively, users can directly flash these full OTA packages using available custom recoveries for Nothing Phone (1)
-
 
 ## Integrity Check
 
