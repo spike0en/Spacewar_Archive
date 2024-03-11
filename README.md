@@ -21,7 +21,7 @@ boot, vendor_boot & vbmeta
 
 Includes 6 images:
 ```bash
-system, system_ext, product, vendor, odm, vbmeta_system & vbmeta_vendor
+system, system_ext, product, vendor, odm & vbmeta_system
 ```
 ### Firmware partition (marked `-image-firmware.7z`)
 
