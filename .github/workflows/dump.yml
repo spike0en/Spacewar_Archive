@@ -24,6 +24,14 @@ jobs:
         sudo apt update
         sudo apt -y install aria2 zstd p7zip-full parallel openssl xxhash
 
+    - name: Install gdown
+      run: |
+        python3 -m pip install gdown
+
+    - name: Set script permissions
+      run: |
+        chmod +x dump.sh
+
     - name: Dump
       id: dump
       run: echo ${{ inputs.urls }} | xargs ./dump.sh
