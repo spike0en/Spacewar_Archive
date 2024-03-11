@@ -13,15 +13,15 @@
 
 ### Boot Partition (marked `-image-boot.7z`)
 
-Includes 4 images:
+Includes 3 images:
 ```bash
-boot, vendor_boot, recovery & vbmeta
+boot, vendor_boot & vbmeta
 ```
 ### Logical partition (marked `-image-logical.7z.001-003`)
 
-Includes 7 images:
+Includes 6 images:
 ```bash
-system, system_ext, product, vendor, odm, vbmeta_system & vbmeta_vendor
+system, system_ext, product, vendor, odm & vbmeta_system
 ```
 ### Firmware partition (marked `-image-firmware.7z`)
 
