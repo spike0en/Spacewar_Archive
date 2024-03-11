@@ -75,13 +75,13 @@ for h in md5 sha1 sha256 xxh128; do
 done
 
 # Move specific boot partition image files from `ota` to `syn` directory
-for f in boot recovery vendor_boot vbmeta; do
+for f in boot vendor_boot vbmeta; do
     mv ${f}.img ../syn
 done
 
 # Switch to `ota` directory and move specific logical partition image files from `ota` to `dyn` directory
 cd ../ota
-for f in system system_ext product vendor odm vbmeta_system vbmeta_vendor; do
+for f in system system_ext product vendor odm vbmeta_system; do
     mv ${f}.img ../dyn
 done
 
