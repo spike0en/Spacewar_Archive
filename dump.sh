@@ -26,10 +26,6 @@ download_file() {
 # Call download_file function with the provided URL
 download_file "$1"
 
-# Create a new folder 'fullota' and copy ota.zip to it
-mkdir fullota
-cp ota.zip fullota
-
 # Continue with unzipping and extracting the payload
 unzip ota.zip payload.bin
 mv payload.bin payload_working.bin
@@ -100,20 +96,6 @@ cd ../dyn
 7z a -mmt4 -mx6 -v1g ../out/${TAG}-image-logical.7z *
 wait
 rm -rf ../dyn
-
-# Switch to `fullota` directory
-cd ../fullota
-
-# Copy ota.zip and rename it to ${TAG}-FullOTA.zip
-cp ota.zip "./${TAG}-FullOTA.zip"
-
-# Calculate SHA-1 hash for the FullOTA file and send them to `out` (tagged with `-FullOTA-hash`)
-SHA1_HASH=$(openssl dgst -sha1 -r "${TAG}-FullOTA.zip" | cut -d ' ' -f 1)
-echo "${SHA1_HASH}" > "../out/${TAG}-FullOTA-hash.sha1"
-
-# Create a split 7z archive for the base FullOTA Package
-7z a -mmt4 -mx6 -v1g "../out/${TAG}-FullOTA.7z" "${TAG}-FullOTA.zip"
-rm -rf ../fullota
 
 # Echo tag name, release body, and release history
 echo "tag=$TAG" >> "$GITHUB_OUTPUT"
