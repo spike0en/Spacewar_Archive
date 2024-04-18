@@ -42,5 +42,5 @@ jobs:
         artifacts: out/*
         artifactErrorsFailBuild: true
         body: ${{ steps.dump.outputs.body }}
-        tag: ${{ steps.dump.outputs.tag }}_${{ github.event.inputs.name }}
+        tag: ${{ github.event.inputs.name }}
         token: ${{ secrets.GITHUB_TOKEN }}
