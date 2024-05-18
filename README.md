@@ -9,13 +9,16 @@
 
 - Official Full OTA Update Package is marked `-FullOTA`. Extract the splitted 7z parts to get the `<name>-FullOTA.zip`.
 
-- The Stock OTA image files are categorized and archived in .7z format based on `boot`, `logical`, and `firmware` partitions:
+## Categories
+
+- The Stock OTA image files are categorized and archived in .7z format based on `boot`, `logical`, and `firmware` categories.
+- The categorization mentioned below does not apply to version [2.5.5](https://github.com/spike0en/Spacewar_Archive/releases/tag/2.5.5) or the releases made prior to it. Users should manually relocate the `dtbo` image from the firmware > boot category folder after extraction for these specific releases. This has been resolved in subsequent releases.
 
 ### Boot Partition (marked `-image-boot.7z`)
 
-Includes 3 images:
+Includes 4 images:
 ```bash
-boot, vendor_boot & vbmeta
+boot, dtbo, vendor_boot & vbmeta
 ```
 ### Logical partition (marked `-image-logical.7z.001-003`)
 
@@ -25,9 +28,9 @@ system, system_ext, product, vendor, odm, vbmeta_system & vbmeta_vendor
 ```
 ### Firmware partition (marked `-image-firmware.7z`)
 
-Includes 19 images:
+Includes 18 images:
 ```bash
-abl, aop, bluetooth, cpucp, devcfg, dsp, dtbo, featenabler, hyp, imagefv, keymaster, modem, multiimgoem, qupfw, shrm, tz, uefisecapp, xbl & xbl_config
+abl, aop, bluetooth, cpucp, devcfg, dsp, featenabler, hyp, imagefv, keymaster, modem, multiimgoem, qupfw, shrm, tz, uefisecapp, xbl & xbl_config
 ```
 
 ## Disclaimer
