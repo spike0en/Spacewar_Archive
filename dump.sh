@@ -71,7 +71,7 @@ for h in md5 sha1 sha256 xxh128; do
 done
 
 # Move specific boot partition image files from `ota` to `syn` directory
-for f in boot vendor_boot vbmeta; do
+for f in boot dtbo vendor_boot vbmeta; do
     mv ${f}.img ../syn
 done
 
