@@ -45,11 +45,10 @@ abl, aop, bluetooth, cpucp, devcfg, dsp, featenabler, hyp, imagefv, keymaster, m
   
 ## Fastboot Flashing
 
-- To flash the stock, unmodified images with fastboot, extract the files using 7z and
-  use [Spacewar_fastboot_flasher](https://github.com/spike0en/Spacewar_fastboot_flasher).
+- To flash the stock, unmodified images with fastboot, extract the `.img` files using an utility such as [7zip](https://7-zip.org/download.html) and use the respective flashing script from [Nothing_Fastboot_Flasher](https://github.com/spike0en/Nothing_Fastboot_Flasher/tree/spacewar).
 
-- Please download and use the latest fastboot [directly from Google](https://developer.android.com/tools/releases/platform-tools).
-
+- The user must install the latest [Google USB drivers](https://developer.android.com/studio/run/win-usb) before flashing.
+  
 - If you optionally want to have dm-verity disabled, perform:
 
 ``` bash
