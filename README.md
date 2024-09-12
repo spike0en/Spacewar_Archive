@@ -5,8 +5,7 @@
 
 ## Downloads
 
-- Downloads are tagged with POST_OTA_VERSION & NothingOS version [here](https://github.com/spike0en/Spacewar_Archive/releases). Please note that certain early releases for `T1.5` may lack `POST_OTA_VERSION` information. In such instances, downloads are provided with custom names, such as `Spacewar_T1.5_XXXXXX-XXXX_NothingOS Version`.
-
+- Downloads are tagged with POST_OTA_VERSION & NothingOS version [here](https://github.com/spike0en/Spacewar_Archive/releases).
 - Official Full OTA Update Package is marked `-FullOTA`. Extract the splitted 7z parts to get the `<name>-FullOTA.zip`.
 
 ## Categories
