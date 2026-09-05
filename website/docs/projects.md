@@ -195,6 +195,7 @@ Essential resources including wikis, firmware archives, audio control utilities,
 
 | Project | Developer | Description |
 |---------|-----------|-------------|
+| [Carl Pei AMA](https://spike0en.github.io/carl-pei-reddit-ama/) | kustomq & spike0en | Archive of Carl Pei's Reddit AMA hosted on r/NothingTech (4 Sept 2026) ([Repo](https://github.com/spike0en/reddit-ama-archive)) |
 | [Disable Essential Space](https://github.com/AntonDevia/Disable-Essential-Space) | AntonDevia | ADB script to completely disable Essential Space and block the Essential Key on Nothing OS |
 | [Fenrir](https://github.com/R0rt1z2/fenrir) | R0rt1z2 | Integrity check bypass PoC for Phone (2a) Series & CMF Phone (1) |
 | [Glyph Adapter](https://github.com/frogfile/GlyphAdapter) | frogfile | A root Android service that lets third-party apps using Nothing's Glyph SDK work on flashed phones |

@@ -22,6 +22,7 @@ const showcaseConfig = fs.existsSync(CONFIG_FILE) ? JSON.parse(fs.readFileSync(C
 const FEATURED_SLUGS = new Set(showcaseConfig.featuredSlugs || []);
 const PROJECT_PLATFORM_OVERRIDES = showcaseConfig.platformOverrides || {};
 const CATEGORY_OVERRIDES = showcaseConfig.categoryOverrides || {};
+const ICON_OVERRIDES = showcaseConfig.iconOverrides || {};
 
 /**
  * Loads cached icon URLs from disk to prevent redundant HTTP requests across builds.
@@ -644,7 +645,9 @@ async function main() {
     const githubUrl = item.links.github;
     const webUrl = item.links.website;
 
-    if (playStoreUrl) {
+    if (ICON_OVERRIDES[item.slug]) {
+      item.iconUrl = ICON_OVERRIDES[item.slug];
+    } else if (playStoreUrl) {
       const match = playStoreUrl.match(/id=([a-zA-Z0-9._]+)/);
       if (match && match[1]) {
         const pkgId = match[1];

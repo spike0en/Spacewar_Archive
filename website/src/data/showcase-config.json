@@ -22,5 +22,8 @@
   },
   "categoryOverrides": {
     "glyph-studio": ["glyph-matrix-powered", "glyph-powered"]
+  },
+  "iconOverrides": {
+    "carl-pei-ama": "https://cdn.nothing.community/assets/avatars/QsrtcJ6JB15WCmXc.png"
   }
 }
