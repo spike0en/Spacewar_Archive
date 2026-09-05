@@ -275,6 +275,7 @@ Dynamic wallpapers and visual enhancements to customize your device's interface.
 | [Essential Key Tools](https://github.com/KoukeNeko/EssentialKeyTools) | KoukeNeko | Remap the Nothing Phone Essential Key to custom actions without root |
 | [Essential Mapper](https://github.com/tracpants/essential-mapper) | tracpants | Remap the Essential Key to launch apps or toggle flashlight by tap count |
 | [Essential Remapper](https://play.google.com/store/apps/details?id=com.essential.remapper) | AllexB | Remap the hardware Essential Key on Nothing & CMF devices to custom actions, shortcuts, or media controls |
+| [Kea](https://play.google.com/store/apps/details?id=com.techiboystudios.kea) | TechiBoy Studios | Remap hardware buttons with single, double, triple, or long press actions and adaptive detection |
 | [Nothing Button Remapper](https://github.com/THE-TECH-CHANGER/NothingButtonRemapper) | THE-TECH-CHANGER | Unlock the full potential of your Nothing Phone's Essential Key without Root |
 | [Sidecue](https://github.com/shashh-hash/sidecue) | shashh-hash | Remap the Essential Key with custom press actions, Glyph Matrix feedback, and auto-pause features |
 | [The Everything Key](https://play.google.com/store/apps/details?id=com.spandone.everythingkey) | spandone | Essential key remapper |
