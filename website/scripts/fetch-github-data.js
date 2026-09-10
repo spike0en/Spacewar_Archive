@@ -56,8 +56,6 @@ function writeFallback(filePath, fallback, label) {
   }
 }
 
-// --- Individual fetchers ---
-
 /**
  * Fetches contributors from the GitHub API and compiles them into a static JSON fallback file.
  * Automatically resolves profile names, avatars, and HTML URLs for core team members, the branding
@@ -258,7 +256,8 @@ async function fetchCommits() {
         sha: item.sha.substring(0, 7),
         author,
         coAuthors,
-        date: item.commit.author?.date || new Date().toISOString(),
+        // Committer date preserves chronological ordering when author dates are altered or rebased.
+        date: item.commit.committer?.date || item.commit.author?.date || new Date().toISOString(),
         message: fullMessage.split('\n')[0] || 'Code updates',
       };
     });
@@ -286,11 +285,9 @@ async function fetchRepoStats() {
   }
 }
 
-// --- Main ---
-
 async function main() {
   if (!AUTH_TOKEN) {
-    console.warn('[prefetch] No GITHUB_TOKEN found — running unauthenticated (60 req/hour limit).');
+    console.warn('[prefetch] No GITHUB_TOKEN found: running unauthenticated (60 req/hour limit).');
   } else {
     console.log('[prefetch] Using GITHUB_TOKEN for authenticated requests.');
   }

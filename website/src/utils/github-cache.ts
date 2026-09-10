@@ -13,14 +13,10 @@
 
 import { useState, useEffect } from 'react';
 
-// --- Static fallback imports (generated at build time by scripts/fetch-github-data.js) ---
-
 import staticReleases from '../data/releases.json';
 import staticCommits from '../data/commits.json';
 import staticRepoStats from '../data/repo-stats.json';
 import staticContributors from '../data/contributors.json';
-
-// --- Types ---
 
 export interface Release {
   id: number;
@@ -62,8 +58,6 @@ interface ReleasesPayload {
 type DataStatus = 'LIVE' | 'OFFLINE';
 type ErrorState = 'RATE_LIMITED' | 'FAILED' | null;
 
-// --- Cache configuration ---
-
 const CACHE_TTL = 15 * 60 * 1000; // 15 minutes
 
 /** localStorage key prefixes, versioned to allow safe cache invalidation. */
@@ -78,18 +72,10 @@ const LS_KEYS = {
   contributorsTime: 'na_gh_contributors_time_v6',
 } as const;
 
-// --- In-memory deduplication layer ---
-
-/**
- * In-flight request map. When a fetch is already in progress for a key,
- * subsequent callers receive the same Promise instead of firing a duplicate request.
- */
 const inflight = new Map<string, Promise<any>>();
 
-/** In-memory data cache, surviving across re-renders within a single page session. */
+/** In-memory data cache surviving across re-renders within a single page session. */
 const memoryCache = new Map<string, { data: any; timestamp: number }>();
-
-// --- Core cache utilities ---
 
 /**
  * Reads and parses data from localStorage.
@@ -257,7 +243,8 @@ async function fetchCommitsFromAPI(): Promise<Commit[]> {
       sha: item.sha.substring(0, 7),
       author,
       coAuthors: parseCoAuthors(fullMessage, author),
-      date: item.commit.author?.date || new Date().toISOString(),
+      // Committer date preserves chronological ordering when author dates are altered or rebased.
+      date: item.commit.committer?.date || item.commit.author?.date || new Date().toISOString(),
       message: fullMessage.split('\n')[0] || 'Code updates',
     };
   });

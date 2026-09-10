@@ -19,15 +19,13 @@ interface ChangelogsPluginData {
 }
 
 /**
- * ReleaseFeed component.
- * Filters and lists latest firmware releases per device model and computes total download metrics.
+ * Filters and lists latest firmware releases per device model.
  */
 export default function ReleaseFeed(): React.JSX.Element {
-  // Centralized GitHub data hook: deduplicated, stale-while-revalidate
   const { releases, totalCount: totalReleasesCount, status: statusSource, error: errorState, loading } = useGitHubReleases();
   // SAFETY: Validated by Docusaurus plugin contract
   const { changelogLinks } = usePluginData('changelogs-plugin') as ChangelogsPluginData;
-  // Track the latest release per model.
+  // Deduplicate builds so each device model displays only its single latest release.
   const latestReleasesPerModel = React.useMemo(() => {
     const seen = new Set<string>();
     const result: Release[] = [];
@@ -59,12 +57,12 @@ export default function ReleaseFeed(): React.JSX.Element {
 
   const stats = [
     {
-      label: 'TOTAL RELEASES',
-      value: loading ? '—' : `${totalReleasesCount}`,
+      label: 'LATEST RELEASE',
+      value: loading ? '—' : latestRelease.publishedAt ? getTimeLag(latestRelease.publishedAt) + ' ago' : '—',
     },
     {
-      label: 'LATEST RELEASE AGE',
-      value: loading ? '—' : latestRelease.publishedAt ? getTimeLag(latestRelease.publishedAt) + ' ago' : '—',
+      label: 'TOTAL RELEASES',
+      value: loading ? '—' : `${totalReleasesCount}`,
     },
     {
       label: 'TOTAL DOWNLOADS',
@@ -76,7 +74,6 @@ export default function ReleaseFeed(): React.JSX.Element {
     <div className={styles.container}>
 
       {loading && <div className={styles.loadingBar} />}
-      {/* Telemetry Header */}
       <div className={styles.telemetryHeader}>
         <div className={styles.systemLabel}>
           <span className={styles.feedTextPrefix}>RELEASES</span>
@@ -88,7 +85,6 @@ export default function ReleaseFeed(): React.JSX.Element {
         </div>
       </div>
 
-      {/* Stats Strip */}
       <div className={styles.statsStrip}>
         {stats.map((stat, i) => (
           <div key={i} className={styles.statItem}>
@@ -100,7 +96,7 @@ export default function ReleaseFeed(): React.JSX.Element {
 
       <div className={styles.consolePanel}>
         <div className={styles.consoleHeader}>
-          <span>RECENT FACTORY IMAGE RELEASES</span>
+          <span>RECENT RELEASES</span>
         </div>
         <div className={styles.consoleBody}>
           {loading ? (

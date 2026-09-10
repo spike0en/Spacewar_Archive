@@ -27,7 +27,6 @@
   box-shadow: none !important;
 }
 
-/* --- Telemetry Header --- */
 .telemetryHeader {
   display: flex;
   align-items: center;
@@ -63,7 +62,6 @@
   color: rgba(128, 128, 128, 0.7);
 }
 
-/* --- Stats Strip --- */
 .statsStrip {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -113,7 +111,6 @@
   white-space: nowrap;
 }
 
-/* --- Console/Terminal (full width) --- */
 .consolePanel {
   background-color: rgba(0, 0, 0, 0.03);
   border: 1px solid var(--nothing-border);
@@ -183,7 +180,6 @@
   background: var(--ifm-color-primary);
 }
 
-/* Each release row */
 .consoleLine {
   display: flex;
   align-items: center;
@@ -201,11 +197,7 @@
   transition: background-color 0.15s ease;
 }
 
-/* Release row link target wrapper.
- * Hover rationale: Enforces text-decoration: none !important across link text and children to override
- * Docusaurus default a:hover underline rules. Text state feedback is provided via primary color highlight
- * instead, matching the interaction pattern of the repository commit tracker widget (CommitMatrix).
- */
+/* Overrides Docusaurus default hover underline. Highlights text with primary color instead. */
 .releaseLink {
   align-items: center;
   color: inherit;
@@ -255,7 +247,7 @@
   line-height: 1;
   transition: color 0.2s ease;
   user-select: none;
-  margin-top: 1px;
+  margin-top: 2px;
 }
 
 .statusDot::before {
@@ -290,60 +282,23 @@
   color: var(--nothing-yellow, #FFC700) !important;
 }
 
-.codenameTag {
-  width: 80px;
-  flex-shrink: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  font-weight: 700;
-  color: var(--ifm-color-primary);
-  text-transform: uppercase;
-}
-
 .messageText {
   flex: 1;
   min-width: 0;
   opacity: 0.88;
-  padding-right: 0.5rem;
   white-space: normal;
   word-break: break-word;
+  transition: color 0.15s ease;
 }
 
 .messageTextLatest {
   opacity: 1 !important;
 }
 
-.buildLink {
-  color: inherit;
-  text-decoration: none !important;
-  transition: color 0.15s ease, opacity 0.15s ease;
-  cursor: pointer;
-}
-
-.buildLink:hover {
-  text-decoration: none !important;
-  color: var(--ifm-color-primary) !important;
-}
-
-.buildLink:hover .buildTextLatest {
-  color: var(--ifm-color-primary) !important;
-}
-
 .buildText {
   color: inherit;
   text-decoration: none !important;
   transition: color 0.15s ease;
-}
-
-.buildTextHighlighted {
-  color: var(--nothing-red, #D71921) !important;
-  font-weight: 600;
-  transition: color 0.15s ease;
-}
-
-[data-theme='dark'] .buildTextHighlighted {
-  color: var(--ifm-color-primary-light, #df1037) !important;
 }
 
 .buildTextLatest {
@@ -429,8 +384,6 @@
   opacity: 0.8;
 }
 
-/* --- Responsive Breakpoints --- */
-
 @media screen and (max-width: 768px) {
   .statsStrip {
     grid-template-columns: repeat(2, 1fr);
@@ -444,8 +397,8 @@
   }
 
   .consoleBody {
-    height: 180px;
-    max-height: 180px;
+    height: 165px;
+    max-height: 165px;
   }
 
   .messageText {
@@ -461,6 +414,12 @@
 
   .consoleLine {
     font-size: 0.7rem;
+  }
+
+  .messageText {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
 
@@ -488,26 +447,7 @@
   }
 }
 
-/* Local Torx Screw positioning */
-.screw {
-  position: absolute;
-  width: 10px;
-  height: 10px;
-  z-index: 10;
-  pointer-events: none;
-}
 
-.screwTopLeft { top: 10px; left: 10px; }
-.screwTopRight { top: 10px; right: 10px; }
-.screwBottomLeft { bottom: 10px; left: 10px; }
-.screwBottomRight { bottom: 10px; right: 10px; }
-
-/* Hide screws on mobile to prevent clutter */
-@media screen and (max-width: 768px) {
-  .screw {
-    display: none !important;
-  }
-}
 
 
 @media screen and (max-width: 576px) {

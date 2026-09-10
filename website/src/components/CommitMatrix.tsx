@@ -25,24 +25,28 @@ const HITS_CACHE_TIME_KEY = 'nothing_archive_hits_time_v1';
 const HITS_CACHE_TIMEOUT = 15 * 60 * 1000;
 
 /**
- * CommitMatrix component.
- * Fetches hitscounter data, filters recent commits, and formats authors for display.
+ * Fetches visitor counts, filters recent commits, and formats authors for display.
  */
 export default function CommitMatrix(): React.JSX.Element {
-  // Centralized GitHub data hooks: deduplicated, stale-while-revalidate
   const { commits, status: statusSource, error: errorState, loading } = useGitHubCommits();
   const { stats: repoStats, loading: statsGhLoading } = useGitHubRepoStats();
 
-  // hitscounter.dev is not a GitHub API; kept as a separate inline fetch
+  // hitscounter.dev is an external visitor tracker, not a GitHub API.
   const [hitsData, setHitsData] = useState<HitsState>({ hits: 0 });
   const [hitsLoading, setHitsLoading] = useState(true);
 
   const filteredCommits = React.useMemo(() => {
+    const TARGET_COMMITS = 7;
+    const sorted = [...commits].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
     const sevenDaysAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
-    return commits.filter(commit => new Date(commit.date).getTime() >= sevenDaysAgo);
+    const recent = sorted.filter(commit => new Date(commit.date).getTime() >= sevenDaysAgo);
+
+    if (recent.length >= TARGET_COMMITS) {
+      return recent;
+    }
+    return sorted.slice(0, TARGET_COMMITS);
   }, [commits]);
 
-  // Fetch hitscounter.dev visitor count (not a GitHub API; kept separate)
   useEffect(() => {
     async function loadHits() {
       try {
@@ -101,8 +105,7 @@ export default function CommitMatrix(): React.JSX.Element {
   ];
 
   /**
-   * Computes the exact pixel width of the widest author line across all 7d commits,
-   * dynamically aligning all commit titles to start right after the largest entry.
+   * Measures the widest author string with Canvas to align commit titles into a column.
    */
   const dynamicAuthorWidth = useMemo(() => {
     if (!ExecutionEnvironment.canUseDOM) return 110;
@@ -132,8 +135,7 @@ export default function CommitMatrix(): React.JSX.Element {
   }, [filteredCommits]);
 
   /**
-   * Formats the author list inline for a commit entry. Primary and co-authors are rendered
-   * inline to ensure direct visibility and attribution for all contributors in the commit log.
+   * Formats primary and co-authors inline for repository contributors.
    */
   const formatAuthors = (commit: Commit, isLatest: boolean): React.JSX.Element => {
     const authorClass = clsx(styles.authorTag, isLatest && styles.authorLatest);
@@ -189,7 +191,6 @@ export default function CommitMatrix(): React.JSX.Element {
     <div className={styles.container}>
 
       {isProgressLoading && <div className={styles.loadingBar} />}
-      {/* Telemetry Header */}
       <div className={styles.telemetryHeader}>
         <div className={styles.systemLabel}>
           <span className={styles.feedTextPrefix}>REPO</span>
@@ -201,7 +202,6 @@ export default function CommitMatrix(): React.JSX.Element {
         </div>
       </div>
 
-      {/* Stats Strip */}
       <div className={styles.statsStrip}>
         {stats.map((stat, i) => (
           <div key={i} className={styles.statItem}>
@@ -211,7 +211,6 @@ export default function CommitMatrix(): React.JSX.Element {
         ))}
       </div>
 
-      {/* Recent Changes — full width */}
       <div className={styles.consolePanel}>
         <div className={styles.consoleHeader}>
           <span>RECENT CHANGES</span>
@@ -244,7 +243,7 @@ export default function CommitMatrix(): React.JSX.Element {
           ) : filteredCommits.length === 0 ? (
             <div className={styles.consoleLine}>
               <span className={styles.statusDot} />
-              <span className={styles.messageText}>NO CHANGES IN THE LAST 7 DAYS</span>
+              <span className={styles.messageText}>NO RECENT COMMITS</span>
             </div>
           ) : (
             filteredCommits.map((commit, idx) => {
