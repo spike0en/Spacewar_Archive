@@ -64,6 +64,7 @@ Check out [Nothing Playground Glyph Toys](https://playground.nothing.tech/toys) 
 | [Clip Matrix](https://github.com/Sukhendu2002/ClipMatrix) | Sukhendu2002 | Customize the Glyph Matrix on Nothing Phone (4a) Pro with different Glyph Toy |
 | [Clock AOD Glyph](https://github.com/Aureliink/Clock-AOD-Glyph-Toy) | Aureliink | A vertical-style clock toy for Nothing Phone (3)'s Glyph Matrix |
 | [Figly](https://github.com/psygos/figly) | psygos | A glyph matrix herbarium for the Nothing Phone (4a) Pro |
+| [Glucose Glyph](https://github.com/0NLyM/CgmGlyph) | 0NLyM | Display continuous glucose monitor (CGM) readings on the Nothing Phone (3) Glyph Matrix via ControlX2 |
 | [Glyp Clocks](https://bleelblep.github.io/disclaimer/glyphclocks/) | bleelblep | 16 Clocks for Phone (3)'s Glyph Matrix ([Repo](https://github.com/bleelblep/glyphclocks)) |
 | [Glyph Aquarium](https://github.com/chriskenhall-tech/Glyph-Aquarium) | chriskenhall-tech | A dynamic AOD aquarium simulation using the Nothing Glyph SDK for the Phone (3) rear light matrix |
 | [Glyph Eyes](https://github.com/yuk1-kondo/GlyphToys-Glypheyes) | yuk1-kondo | Playful tilting pupil toy |
@@ -175,6 +176,7 @@ Apps that integrate with the Glyph interface on Nothing phones.
 | [Morse Glyphs](https://github.com/roxe12345/MorseGlyphs) | roxe12345 | Morse code displayed in glyph lights |
 | [Nashi Pomodoro](https://github.com/Dreaminko/NashiPomodoro) | Dreaminko | Pomodoro timer that visualizes focus and break progress through the Glyph Interface |
 | [Nothing Glyph Gyroscope](https://github.com/gawdam/nothingGyro) | gawdam | Bubble level using accelerometer and gyroscope |
+| [Nothing Modes](https://nothing-modes.vercel.app) | Dvorinka | Automation and routines app with Glyph interface and Glyph Matrix support ([Repo](https://github.com/Dvorinka/Nothing_Modes)) |
 
 ### Toys & Games
 
