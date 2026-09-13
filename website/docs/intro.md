@@ -2,13 +2,12 @@
 sidebar_position: 1
 slug: /intro
 title: Introduction
-description: A curated list of everything related to Nothing & CMF by Nothing ecosystem — apps, firmware, tools, guides, and resources.
-keywords: [nothing, cmf by nothing, nothing ecosystem, rooting, nothing firmware, nothing apps, nothing customisation, nothing phone, glyph interface]
+description: Official Nothing OS firmware, OTA packages, device specs, technical guides, changelogs, community apps, and aftermarket projects.
 ---
 
 # Nothing Archive
 
-Your ultimate source for Nothing OS firmware, stock OTA images, community apps, projects, resources, detailed guides and more for Nothing & CMF by Nothing devices.
+A central archive of Nothing OS firmware, stock OTA packages, community projects, and installation guides for Nothing and CMF devices.
 
 <div class="features-grid">
   <div class="feature-card">

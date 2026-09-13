@@ -1,8 +1,7 @@
 ---
 sidebar_position: 8
 title: Photography
-description: GCAM ports, camera configs, and stock presets for Nothing devices.
-keywords: [nothing gcam, nothing phone camera configs, nothing camera presets, nothing photography]
+description: Google Camera ports, device sensor XML configs, and stock Nothing Camera presets.
 ---
 
 # Photography Resources
@@ -21,9 +20,9 @@ GCAM ports, configs, and camera presets for Nothing devices.
 ### GCAM Configs
 
 :::note
-- "**Best**" is subjective. Try out all available configurations and variants to determine which one works best for you!
-- For Snapdragon- and MTK-based devices, it is generally recommended to use the **Snap** and **Aweme** variants respectively.
-- Installing a random variant of the GCAM app alone is not enough to get the best results; the config files tuned by a config creator based on the device's camera sensor/lenses are what make it usable and perform the best.
+- Camera quality varies with each configuration. Test available profiles to find what fits your shooting conditions.
+- For Snapdragon and MediaTek devices, use the **Snap** and **Aweme** package variants respectively.
+- Tuning XML configs for specific sensor hardware delivers better image processing than running default port settings.
 :::
 
 #### Importing the Config

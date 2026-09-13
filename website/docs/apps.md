@@ -1,8 +1,7 @@
 ---
 sidebar_position: 6
 title: Community Apps
-description: Community-built apps for Nothing OS — featuring Glyph-powered tools, productivity apps, customization packs, widgets, and wallpapers.
-keywords: [nothing apps, nothing community apps, glyph apps, glyph interface, nothing widgets, icon packs, productivity tools, wallpapers, visual effects, customization]
+description: Catalog of community apps for Nothing OS, including Essential Apps, Glyph Matrix toys, widgets, icon packs, and system tools.
 ---
 
 # Community Apps

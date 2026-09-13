@@ -2,17 +2,14 @@
 sidebar_position: 4
 title: Guides
 pagination_prev: changelogs/index
-description: Step-by-step guides for bootloader unlocking, rooting, OTA updates, and Nothing device customization.
-keywords: [nothing bootloader unlock, root nothing phone, nothing fastboot, nothing ota updates, nothing dialer codes, remap essential key]
+description: Technical guides for OTA sideloading, dialer codes, bootloader unlocking, rooting, partition backups, custom ROMs, and unbricking.
 ---
 
 # How-to Guides
 
-Step-by-step guides on several aspects.
+Step-by-step procedures for Nothing OS configuration, maintenance, and modification.
 
 ## General Use & Troubleshooting
-
-Tips, tricks, and general guides for everyday use.
 
 ### OTA Sideloading
 
@@ -105,7 +102,7 @@ B. **Proceed with Sideloading**
       *#*#682#*#*
       ```
    - This will launch the built-in offline updater tool.  
-   - The UI may show `NothingOfflineOtaUpdate` or `NOTHING BETA OTA UPDATE` — both work.
+   - The UI may show `NothingOfflineOtaUpdate` or `NOTHING BETA OTA UPDATE`; both work.
 
  - **Apply the Update:**  
    - The updater will automatically detect the update file.  

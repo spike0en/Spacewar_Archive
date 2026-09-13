@@ -1,7 +1,7 @@
 ---
 sidebar_position: 4
 title: Licensing
-description: Multi-license structure of the Nothing Archive project.
+description: Open-source licenses, asset usage terms, and reservation policies governing Nothing Archive.
 ---
 
 # Licensing

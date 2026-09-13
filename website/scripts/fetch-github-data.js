@@ -313,7 +313,7 @@ async function main() {
   const rootContrib = path.join(__dirname, '..', '..', 'CONTRIBUTING.md');
   const docContrib = path.join(__dirname, '..', 'docs', 'contributing.md');
   if (fs.existsSync(rootContrib)) {
-    const frontmatter = `---\nsidebar_position: 2\ntitle: Contributing\ndescription: Guidelines and instructions to contribute to the Nothing Archive project.\n---\n\n`;
+    const frontmatter = `---\nsidebar_position: 2\ntitle: Contributing\ndescription: Guidelines for contributing documentation, showcase entries, and code maintenance.\n---\n\n`;
     fs.writeFileSync(docContrib, frontmatter + fs.readFileSync(rootContrib, 'utf8'));
   }
 
@@ -325,7 +325,7 @@ async function main() {
     const ackMatch = readmeContent.match(/## Credits & Acknowledgements\s*([\s\S]*?)(?=\n##\s+|$)/);
     if (ackMatch) {
       const ackBody = ackMatch[1].trim().replace(/^Special thanks to:\s*/i, '');
-      const frontmatter = `---\nsidebar_position: 3\ntitle: Acknowledgements\ndescription: Credits and acknowledgements for key projects and contributors to Nothing Archive.\n---\n\n# Acknowledgements\n\nNothing Archive builds upon community contributions. Special thanks to:\n\n`;
+      const frontmatter = `---\nsidebar_position: 3\ntitle: Acknowledgements\ndescription: Credits and attributions for open-source tools, scripts, and community contributors.\n---\n\n# Acknowledgements\n\nNothing Archive builds upon community contributions. Special thanks to:\n\n`;
       const closing = `\n\nThanks to all app developers, project maintainers, and Nothing community members supporting this project.\n`;
       fs.writeFileSync(docAck, frontmatter + ackBody + closing);
     }

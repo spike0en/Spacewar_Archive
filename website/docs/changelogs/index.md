@@ -6,19 +6,19 @@ sidebar_position: 1
 slug: /changelogs
 pagination_prev: firmware
 pagination_next: guides
-description: Official Nothing OS Update Changelogs for Nothing and CMF devices, along with updates policies and guide.
+description: Official Nothing OS update changelogs, build number anatomy, update cadence timelines, and model update directories.
 ---
 
 # Nothing OS Updates & Changelogs
 
-Welcome to the Nothing OS update index. Here you will find official changelogs for Nothing and CMF by Nothing devices. 
+Welcome to the Nothing OS update index, featuring official changelogs for Nothing and CMF devices. 
 
-Before exploring the individual changelogs below, please review the guidelines below to understand how Nothing OS updates are built, compiled, and distributed.
+Review these guidelines to understand how Nothing OS updates are built and distributed.
 
 ## 🚀 How Updates Work
 
 ### 1. Phased Regional Rollouts
-Nothing OS updates are released in **staged phases** rather than all at once. Updates are gradually distributed across different regions over several days. This allows the software team to monitor stability and detect any critical bugs before a global rollout. 
+Nothing OS updates roll out in staged phases over several days so the software team can monitor stability before global deployment. 
 * **Manual Sideloading**: Official incremental and full update packages are available in the [Firmware](../firmware.md) section. Devices can also be updated manually by following the [Sideloading Guides](../guides.md).
 
 ### 2. Update Frequency & Cadence
@@ -31,31 +31,31 @@ Nothing OS devices generally target a **bi-monthly** (every two months) update c
 ### 3. Understanding Build Numbers
 Nothing OS software build numbers contain structured metadata about the build itself. 
 
-Let's dissect the example build **`Asteroids-B4.1-260414-1749`**:
+The table below breaks down two sample builds: `FroggerPro-C5.0-260902-1559` and `Asteroids-B4.1-260414-1749`.
 
-| Component | Codename | Description |
-| :--- | :--- | :--- |
-| **Device Codename** | `Asteroids` | Codename representing the specific device (in this case, Phone (3a)) |
-| **Android Version** | `B` | Android version codename character (e.g. `B` = Baklava/Android 16, `V` = Vanilla Ice Cream/Android 15, `U` = Upside Down Cake/Android 14) |
-| **Nothing OS Version** | `4.1` | Nothing OS version number |
-| **Build Date** | `260414` | The compilation date in `YYMMDD` format (April 14, 2026) |
-| **Build Time** | `1749` | The compilation time in `HHMM` 24-hour format |
+| Component | `FroggerPro-C5.0-260902-1559` | `Asteroids-B4.1-260414-1749` | Description |
+| :--- | :--- | :--- | :--- |
+| **Device Codename** | `FroggerPro` | `Asteroids` | Codename representing the specific device (Phone (4a) Pro vs Phone (3a)) |
+| **Android Version** | `C` | `B` | Android version codename character (e.g. `C` = Cinnamon Bun/Android 17, `B` = Baklava/Android 16, `V` = Vanilla Ice Cream/Android 15, `U` = Upside Down Cake/Android 14) |
+| **Nothing OS Version** | `5.0` | `4.1` | Nothing OS version number |
+| **Build Date** | `260902` (September 02, 2026) | `260414` (April 14, 2026) | The compilation date in `YYMMDD` format |
+| **Build Time** | `1559` | `1749` | The compilation time in `HHMM` 24-hour format |
 
 :::info[Build Date vs. Public Rollout]
-Every software build goes through internal quality assurance and testing by the Nothing software team before release. Consequently, there is always a delay between the compilation date and the public rollout date. 
+Every software build undergoes internal quality assurance and testing by the Nothing software team before release. A delay between the compilation date and the public rollout date is normal. 
 
-For instance, while a build like `Asteroids-B4.1-260414-1749` was compiled on **April 14th**, it was rolled out on **April 24th**. The bi-monthly schedule countdown for the next update begins from the **rollout date**, not the compilation date.
+For example, `Asteroids-B4.1-260414-1749` was compiled on April 14, but rolled out on April 24. The bi-monthly schedule countdown for the next update begins on the public rollout date rather than the compilation date. The next OTA update ([`Asteroids-B4.1-260810-1153`](./asteroids/Asteroids-B4.1-260810-1153.md)) arrived on August 19, 2026.
 :::
 
 ### 4. Security Patch Integration
 A new software build does not always include the latest monthly Android security patch. Security patch integration depends on Google's release schedule, Nothing's development cycle, and build cut-off dates.
 
 ### 5. Feature Parity & Model Differences
-Each Nothing and CMF device has its own development cycle tailored to its hardware. Comparing version numbers or questioning release timing discrepancies between different generations is futile.
+Each Nothing and CMF device has its own development cycle tailored to its hardware. Do not compare version numbers or release timing directly between different device generations.
 * **Trickle-Down Features**: Features introduced on newer models gradually make their way back to older devices over time, unless there are hardware limitations. However, newer models may be prioritized first to support initial sales launches.
 * **Version Parity**: Having the same version number (e.g., Nothing OS 4.1) on two different devices does not mean they have identical features. For example, budget-friendly models and flagship models will have features tailored to their hardware capabilities (e.g., custom camera modes or depth effects on lockscreen might be rolled out to models at different times).
 
-:::tip[Deep Dive]
+:::tip[Technical Background]
 To learn more about the development, testing, and distribution process behind Nothing OS updates, see the community article:
 👉 **[Inside a Major Nothing OS Update](https://nothing.community/d/47051-inside-a-major-nothing-os-update)**
 :::

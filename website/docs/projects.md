@@ -1,8 +1,7 @@
 ---
 sidebar_position: 7
 title: Projects
-description: Community-maintained tools and projects for Nothing devices, including Glyph tools, customization mods, audio EQ profiles, web apps, and developer resources.
-keywords: [nothing projects, glyph tools, nothing root, nothing magisk, customization, desktop themes, browser extensions, nothing eq profiles, nothing logkit fix, developer tools, developer assets]
+description: Community projects for Nothing devices, including Glyph tools, desktop themes, EQ profiles, web apps, browser extensions, and root modules.
 ---
 
 # Community Projects

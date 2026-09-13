@@ -1,6 +1,6 @@
 # Contributing to Nothing Archive
 
-First off, thank you for considering contributing to the Nothing Archive project!
+Thank you for contributing to Nothing Archive.
 
 ## Ways to Contribute
 
@@ -15,7 +15,7 @@ This involves the continuous upkeep and expansion of the main English documentat
 ### 2. Technical Development & Enhancements
 Contribute to the website's infrastructure by resolving bugs or adding features. Technical contributions should:
 - Respect existing coding conventions to ensure future scalability and ease of maintenance.
-- Prioritize stable, premium user experiences while minimizing unnecessary divergence from the core source.
+- Keep the user interface clean and responsive while avoiding unnecessary divergence from the upstream codebase.
 
 ## Restricted Files & Directories
 

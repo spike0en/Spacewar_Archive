@@ -2,7 +2,7 @@
 sidebar_label: Firmware
 title: Nothing OS Firmware
 pagination_next: changelogs/index
-description: Complete release index for Nothing OS firmware, OTA updates, and factory images for Nothing and CMF devices.
+description: Nothing OS full OTA packages, incremental update zips, stock partition dump images, and interactive partition explorer.
 sidebar_position: 3
 hide_table_of_contents: true
 ---

@@ -1,8 +1,7 @@
 ---
 sidebar_position: 5
 title: Official Resources
-description: Official Nothing OEM applications, wallpapers, fonts, kernel sources, developer SDKs, and support links.
-keywords: [nothing official apps, nothing wallpapers, nothing fonts, nothing kernel sources, glyph developer kit, cmf watch app]
+description: Official Nothing wallpapers, firmware dumps, kernel sources, 3D models, user manuals, system sounds, fonts, and Glyph SDKs.
 ---
 
 # Official OEM Resources

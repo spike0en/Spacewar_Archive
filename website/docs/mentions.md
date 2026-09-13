@@ -2,8 +2,7 @@
 sidebar_position: 2
 slug: /mentions
 title: Featured & Mentions
-description: A curated directory of social media posts, threads, YouTube guides, and community discussions featuring Nothing Archive.
-keywords: [nothing community, nothing tech reddit, nothing firmware x, nothing custom rom youtube]
+description: Community threads, forum posts, YouTube videos, Reddit discussions, and social media coverage of Nothing Archive.
 ---
 
 # Featured & Mentions
