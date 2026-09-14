@@ -60,8 +60,10 @@ Themes and rices for Arch Linux, VS Code, and other development environments fol
 |---------|-----------|-------------|
 | [Dotfiles Nothing OS](https://github.com/0xbbuddha/dotfiles_nothing_os) | 0xbbuddha | Hyprland + Quickshell rice for Linux inspired by Nothing OS design language. |
 | [Glyph SDDM](https://github.com/xCaptaiN09/glyph-sddm) | xCaptaiN09 | Minimalist SDDM theme inspired by Nothing's design language |
+| [MkDocs Void](https://github.com/rkriad585/mkdocs-void) | rkriad585 | Nothing OS inspired design theme for MkDocs website |
 | [Notes (Windows)](https://github.com/rohankishore/Notes-1) | rohankishore | Nothing themed notepad for Windows |
 | [Nothing Bar](https://github.com/bestK1ngArthur/nothing-bar) | bestK1ngArthur | macOS menu bar app |
+| [Nothing Clock (Windows & macOS)](https://github.com/AlexSUNNDER-PRY0R/nothing-clock-SS) | AlexSUNNDER-PRY0R | Nothing OS inspired clock screensaver |
 | [Nothing Cursor Pack](https://discord.com/channels/930878214237200394/1513976039335002192) | farinhajorge | A cursor pack inspired by Nothing's design language |
 | [Nothing Floris](https://github.com/itsmeralph09/nothing-floris) | itsmeralph09 | Minimalist Nothing OS inspired theme for FlorisBoard Android keyboard |
 | [Nothing KDE Rice](https://github.com/buddi0812/nothing-kde-rice) | buddi0812 | Nothing OS inspired KDE Plasma 6 desktop for Linux. |
