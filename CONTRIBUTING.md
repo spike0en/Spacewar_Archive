@@ -42,11 +42,13 @@ All entries must use the standard 3-column markdown table structure:
   | [Glimpse](https://play.google.com/store/apps/details?id=com.example.glimpse) | dev_user | Minimal notification peek tool for Nothing OS. ([Repo](https://github.com/dev_user/glimpse)) |
   ```
 - **Cross-Platform Links**: If an iOS build exists, link it in the description using `([iOS](https://apps.apple.com/...))` or `([App Store](...))`.
-- **Description Quality**: Keep descriptions to a single, concise sentence. Do not include raw HTML (`<br>`, `<img ...>`), line breaks, or Markdown images inside table cells.
-- **Platform Keywords**: For desktop or web utilities (e.g. earbud controllers, IDE themes, web tools), explicitly mention supported platforms (e.g., *Windows, Linux, macOS, Web*) to enable automatic platform badge tagging in the Showcase.
+- **Description Quality**: Keep descriptions to a single, concise sentence. State what the application or project does plainly and factually. Avoid promotional hype, marketing adjectives, buzzwords, and clichés (such as "unlock the full potential", "seamless", "vibrant", "revolutionary", or "beautifully crafted"). Avoid participle tails (such as ", featuring...") and em dashes. Do not include raw HTML (`<br>`, `<img ...>`), line breaks, or Markdown images inside table cells.
+- **Platform Keywords**: For desktop, CLI, or web utilities (e.g. earbud controllers, desktop rices, screensavers, developer tools), explicitly state the supported operating systems in the description (e.g. *for Windows*, *for macOS*, *for Linux*, *for Windows and macOS*, *for Windows, Linux, and macOS*, *Web-based*). Avoid ambiguous labels like "PC". Explicit OS keywords ensure the Showcase prebuild parser accurately tags the entry for Target Platform filters.
 
 ### 2. Naming Conventions
 
+* **Clean display names**: Keep product titles clean without parenthetical OS tags (e.g., **Nothing Clock**, **Attune**, **Nothing Desktop**, **EarA**).
+* **Parenthetical disambiguation**: Reserve `(OS)` suffixes in titles strictly for disambiguating identical project names across authors or platforms (e.g., **Nothing X (macOS)** vs **Nothing X (Windows)**, or **Notes (Windows)** vs mobile Notes).
 * **Add spaces between words**: Use **Glyph Glow** instead of `GlyphGlow`, **Nothing OS** instead of `NothingOS`, and **Better Battery** instead of `BetterBattery`.
 * **Use title case**: Capitalize words properly. Avoid all-lowercase or repo-style names (e.g., **Nothing Rice** instead of `nothing-rice`).
 * **Preserve acronyms & abbreviations**: Keep 2-4 letter technical acronyms, protocol abbreviations, and product codes in ALL CAPS (**FMC**, **SDDM**, **KWGT**, **AOD**, **BLE**, **PWA**, **ADB**, **GUI**, **CLI**).
@@ -68,4 +70,4 @@ All entries must use the standard 3-column markdown table structure:
 5. Push your branch and open a Pull Request (PR) to `main`.
 6. Verify that automated GitHub Actions checks pass, and wait for review and merge.
 
-Thank you for helping grow the Nothing Archive!
+Thank you for helping grow Nothing Archive.
